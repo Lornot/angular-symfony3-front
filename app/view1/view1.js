@@ -9,6 +9,15 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$scope', '$http', function($scope, $http) {
+  $scope.blogPosts = [];
+
+  $http.get('http://sa/web/app_dev.php/cget')
+      .then(function(result) {
+          console.log('things went well!', result);
+          $scope.blogPosts = result.data;
+      }, function (err) {
+          console.error('things did not go so well', err);
+      })
 
 }]);
