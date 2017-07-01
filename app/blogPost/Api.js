@@ -7,11 +7,16 @@ angular.module('myApp.blogPost')
             var ROOT_URL = 'http://sa/web/app_dev.php/cget';
 
             function getAll() {
-                return $http.get(ROOT_URL);
+                return $http.get('http://sa/web/app_dev.php/cget');
+            }
+            
+            function post(blogPost) {
+                return $http.post('http://sa/web/app_dev.php/post', blogPost)
             }
 
             return {
-                getAll: getAll
+                getAll: getAll,
+                post:   post
             }
         }
     ]);
