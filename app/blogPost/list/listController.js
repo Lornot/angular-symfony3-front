@@ -2,7 +2,7 @@
 
 
 angular.module('myApp.blogPost')
-    .controller('listController', ['$scope', 'Api', function($scope, Api) {
+    .controller('listController', ['$scope', 'Api', '$filter', function($scope, Api, $filter) {
 
         $scope.blogPosts = [];
 
@@ -13,5 +13,17 @@ angular.module('myApp.blogPost')
             }, function (error) {
                 console.log('error', error);
             });
+
+        $scope.remove = function(id) {
+            Api.remove(id)
+                .then(function(result) {
+                    $scope.blogPosts = $filter('filter')($scope.blogPosts, function (value, index, array) {
+                        return value.id != id;
+
+                    })
+                }, function(error) {
+                    console.log('error', error);
+                })
+        }
 
     }]);

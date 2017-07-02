@@ -23,11 +23,16 @@ angular.module('myApp.blogPost')
                 return $http.put(ROOT_URL+'put/'+id, data)
             }
 
+            function remove(id) {
+                return $http.delete(ROOT_URL+'delete/'+id)
+            }
+
             return {
                 get:    get,
                 getAll: getAll,
                 post:   post,
-                put:    put
+                put:    put,
+                remove: remove
             }
         }
     ]);
