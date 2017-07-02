@@ -12,6 +12,10 @@ angular.module('myApp.blogPost', ['ngRoute'])
             .when('/create', {
                 templateUrl: 'blogPost/create/create.html',
                 controller: 'createController'
+            })
+            .when('/update/:id', {
+                templateUrl: 'blogPost/update/update.html',
+                controller: 'updateController'
             });
     }]);
 

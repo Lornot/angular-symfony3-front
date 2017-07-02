@@ -4,6 +4,8 @@ angular.module('myApp.blogPost')
     .controller('createController', ['$scope', 'Api', '$window', function ($scope, Api, $window) {
         $scope.blogPost = {};
 
+        console.log('sdfasdf');
+
         $scope.create = function (blogPost) {
 
             Api.post(blogPost)
