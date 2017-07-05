@@ -4,27 +4,27 @@ angular.module('myApp.blogPost')
     .factory('Api', [
         '$http',
         function ($http) {
-            var ROOT_URL = 'http://sa/web/app_dev.php/';
+            var ROOT_URL = 'http://sa/web/app_dev.php/posts';
 
             function get(id) {
-                console.log(ROOT_URL+'get/'+id);
-                return $http.get(ROOT_URL+'get/'+id)
+                console.log(ROOT_URL+'/'+id);
+                return $http.get(ROOT_URL+'/'+id)
             }
 
             function getAll() {
-                return $http.get('http://sa/web/app_dev.php/cget');
+                return $http.get(ROOT_URL);
             }
             
             function post(blogPost) {
-                return $http.post('http://sa/web/app_dev.php/post', blogPost)
+                return $http.post(ROOT_URL, blogPost)
             }
 
             function put(id, data) {
-                return $http.put(ROOT_URL+'put/'+id, data)
+                return $http.put(ROOT_URL+'/'+id, data)
             }
 
             function remove(id) {
-                return $http.delete(ROOT_URL+'delete/'+id)
+                return $http.delete(ROOT_URL+'/'+id)
             }
 
             return {
